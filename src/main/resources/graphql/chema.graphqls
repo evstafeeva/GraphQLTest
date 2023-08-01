@@ -1,9 +1,9 @@
 type Query {
-    bookById(id: ID): Book
-    authorById(id: ID): Author
-    getBooksByAuthor(author: String): [Book]
+    bookById(id: ID!): Book
+    authorById(id: ID!): Author
+    getBooksByAuthor(author: String!): [Book]
     getAllBooks: [Book]
-    getAuthor(name: String): Author
+    getAuthor(name: String!): [Author]
 }
 
 type Mutation {
