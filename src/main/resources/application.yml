@@ -1,0 +1,13 @@
+server:
+  port: 8080
+
+spring:
+  jpa:
+    database: postgresql
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=public
+    username: postgres
+    password: pgpwd4habr
+  graphql:
+    graphiql:
+      enabled: true
