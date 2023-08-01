@@ -17,13 +17,16 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Table(name = "Book")
 public class Book {
+
     @Id
     @Column(name = "book_id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "book_generator")
     @SequenceGenerator(name = "book_generator", sequenceName = "book_book_id_seq", allocationSize = 1)
-    private int id;
+    private Integer id;
+
     @Column(name = "title")
     private String title;
+
     @ManyToMany(mappedBy = "books")
     private List<Author> authors;
 
@@ -36,7 +39,7 @@ public class Book {
         this.title = title;
     }
 
-    public Book(int id, String title) {
+    public Book(Integer id, String title) {
         this.id = id;
         this.title = title;
     }

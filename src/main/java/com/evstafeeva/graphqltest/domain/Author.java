@@ -24,18 +24,20 @@ public class Author {
     @Column(name = "author_id")
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "author_generator")
     @SequenceGenerator(name = "author_generator", sequenceName = "author_author_id_seq", allocationSize = 1)
-    private int id;
+    private Integer id;
+
     @Column(name = "name")
     private String name;
-    @ManyToMany(cascade = { CascadeType.ALL })
+
+    @ManyToMany(cascade = {CascadeType.ALL})
     @JoinTable(
         name = "Author_to_Book",
-        joinColumns = { @JoinColumn(name = "author_id") },
-        inverseJoinColumns = { @JoinColumn(name = "book_id") }
+        joinColumns = {@JoinColumn(name = "author_id")},
+        inverseJoinColumns = {@JoinColumn(name = "book_id")}
     )
     private List<Book> books;
 
-    public Author(int id, String name) {
+    public Author(Integer id, String name) {
         this.id = id;
         this.name = name;
     }

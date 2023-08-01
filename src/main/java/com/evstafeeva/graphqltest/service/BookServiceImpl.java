@@ -30,7 +30,7 @@ public class BookServiceImpl implements BookService {
         for (BookInput bookInput : bookInputs) {
             if (bookInput.id() != null) {
                 savedBooks.add(bookRepository.findById(bookInput.id())
-                    .orElseThrow(() -> new NotFoundException("The book was not found by id" + bookInput.id())));
+                    .orElseThrow(() -> new NotFoundException("The book was not found by id " + bookInput.id())));
             } else {
                 booksToSave.add(new Book(bookInput.title()));
             }
@@ -54,10 +54,7 @@ public class BookServiceImpl implements BookService {
                     author.getBooks().add(book);
                     return author;
                 } else {
-                    Author author = new Author();
-                    author.setName(authorInput.name());
-                    author.setBooks(List.of(book));
-                    return author;
+                    return new Author(authorInput.name(), List.of(book));
                 }
             })
             .toList();
